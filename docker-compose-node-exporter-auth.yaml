@@ -5,9 +5,10 @@ services:
     image: quay.io/prometheus/node-exporter:latest
     command:
       - '--path.rootfs=/host'
+      - '--web.config=/node_exporter_conf.yaml'
     network_mode: host
     pid: host
     restart: unless-stopped
     volumes:
       - '/:/host:ro,rslave'
-
+      - ./node_exporter_conf.yaml:/node_exporter_conf.yaml

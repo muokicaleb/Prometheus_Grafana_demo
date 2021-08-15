@@ -1,0 +1,15 @@
+version: '3.7'
+
+volumes:
+    prometheus_data: {}
+
+services:
+
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - ./prometheus.yaml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    ports:
+      - 9090:9090
+    restart: always
